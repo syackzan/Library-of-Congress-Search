@@ -10,6 +10,8 @@ function getParams() {
   var query = searchParamsArr[0].split('=').pop();
   var format = searchParamsArr[1].split('=').pop();
 
+  
+
   searchApi(query, format);
 }
 
