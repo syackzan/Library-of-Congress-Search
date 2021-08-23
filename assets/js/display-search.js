@@ -19,19 +19,31 @@ function getParams() {
 }
 
 function searchApi(query, format){
-  var requestUrl = "https://www.loc.gov/" + format + "/?q=" + query + "&fo=json"; 
-  console.log(requestUrl);
   
-  fetch(requestUrl)
+  if (format == null){
+    var srequestUrl = "https://www.loc.gov/search/?q=" + query + "&fo=json"
+    fetch(srequestUrl)
     .then (function (response) {
       return response.json();
     })
-    .then(function (data) {
+    .then(function (dataAll) {
       console.log('Fetch Response \n-------------');
-      console.log(data);
+      console.log(dataAll);
     });
   
-  
+  } else {
+      var requestUrl = "https://www.loc.gov/" + format + "/?q=" + query + "&fo=json"; 
+      console.log(requestUrl);
+      
+      fetch(requestUrl)
+        .then (function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log('Fetch Response \n-------------');
+          console.log(data);
+        });
+    }
   }
   
   getParams()
