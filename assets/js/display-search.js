@@ -8,9 +8,29 @@ function getParams() {
 
   // Get the query and format values
   var query = searchParamsArr[0].split('=').pop();
+  var queryR = query.replace("%20", "+");
   var format = searchParamsArr[1].split('=').pop();
+  console.log(query);
+  console.log(queryR);
+  console.log(format);
 
-  searchApi(query, format);
+  searchApi(queryR, format);
 }
 
-getParams()
+function searchApi(query, format){
+  var requestUrl = "https://www.loc.gov/" + format + "/?q=" + query; 
+  console.log(requestUrl);
+  
+  fetch(requestUrl)
+    .then (function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log('Fetch Response \n-------------');
+      console.log(data);
+    });
+  
+  
+  }
+  
+  getParams()
