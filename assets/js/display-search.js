@@ -42,6 +42,9 @@ function searchApi(query, format){
         .then(function (data) {
           console.log('Fetch Response \n-------------');
           console.log(data);
+          for (var i = 0; i < data.results.length; i++){
+            var searchBox = document.createElement("div");
+          }
         });
     }
   }
