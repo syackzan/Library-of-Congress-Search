@@ -17,17 +17,6 @@ function getParams() {
 
   searchApi(queryR, format);
 }
-  if (format == null){
-    var srequestUrl = "https://www.loc.gov/search/?q" + query + "&fo=json"
-    fetch(srequestUrl)
-    .then (function (response) {
-      return response.json();
-    })
-    .then(function (dataAll) {
-      console.log('Fetch Response \n-------------');
-      console.log(dataAll);
-    });
-  }
 
 function searchApi(query, format){
   
@@ -53,6 +42,9 @@ function searchApi(query, format){
         .then(function (data) {
           console.log('Fetch Response \n-------------');
           console.log(data);
+          for (var i = 0; i < data.results.length; i++){
+            var searchBox = document.createElement("div");
+          }
         });
     }
   }
